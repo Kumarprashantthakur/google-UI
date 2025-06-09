@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Google Style Search Box</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="shortcut icon" href="google.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <div class="hero">
+    <div id="searchBox" class="search-box">
+      <img src="./google.png" id="googleIcon" alt="Google Logo" class="icon"/>
+      <input type="text" id="searchInput" placeholder="Search Google or type a URL" />
+      <img src="./microphone.png" alt="Mic Icon" class="mic-icon icon"/>
+    </div>
+  </div>
+
+  <script>
+    const searchBox = document.getElementById("searchBox");
+    const googleIcon = document.getElementById("googleIcon");
+    const searchInput = document.getElementById("searchInput");
+
+    googleIcon.onclick = function () {
+      searchBox.classList.toggle("active");
+    };
+
+    searchInput.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        const query = searchInput.value.trim();
+        if (query) {
+          window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, "_blank");
+        }
+      }
+    });
+  </script>
+</body>
+</html>
